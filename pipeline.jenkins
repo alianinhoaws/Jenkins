@@ -29,7 +29,7 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo "start building image"
-                dir ('Jenkins') {
+                dir ('.') {
                 	sh 'docker build -t alianinho/student:latest . '
                 }
             }
