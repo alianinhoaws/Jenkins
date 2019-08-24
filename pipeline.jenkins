@@ -13,7 +13,8 @@ pipeline {
     stages {
        stage("Clone repo") { 
               steps {
-        git branch: 'DEV', changelog: false, poll: false, url: 'https://github.com/macnaer/Students-Book.git'
+              git branch: 'DEV', changelog: false, poll: false, url: 'https://github.com/macnaer/Students-Book.git'
+              git 'https://github.com/alianinhoaws/Jenkins.git'
                    }
        }
        stage("docker login") {
