@@ -1,6 +1,6 @@
 FROM node:latest
 WORKDIR /home/app
-COPY /var/lib/jenkins/workspace/1/ /home/app
+COPY /var/lib/jenkins/workspace/student/docker/student /home/app
 RUN npm install
 EXPOSE 3000
 CMD [ "node", "server.js" ]
