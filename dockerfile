@@ -1,6 +1,9 @@
 FROM node:latest
-WORKDIR /home/app
-COPY /var/lib/jenkins/workspace/1/ /home/app
+WORKDIR /var/www 
+COPY /var/lib/jenkins/workspace/student/docker/student /var/www
+
 RUN npm install
-EXPOSE 8080
-CMD [ "node", "server.js" ]
+
+RUN cd client && npm install && cd ..
+
+ENTRYPOINT [ "npm", "run", "dev" ]
