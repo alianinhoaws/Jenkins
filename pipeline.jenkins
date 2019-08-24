@@ -11,8 +11,10 @@ pipeline {
         timestamps()
     }
     stages {
-       stage('Clone repo') { 
+       stage("Clone repo") { 
+              steps {
         git branch: 'DEV', changelog: false, poll: false, url: 'https://github.com/macnaer/Students-Book.git'
+                   }
        }
        stage("docker login") {
             steps {
