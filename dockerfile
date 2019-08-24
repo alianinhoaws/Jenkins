@@ -1,6 +1,6 @@
 FROM node:latest
 WORKDIR /var/www 
-COPY /var/lib/jenkins/workspace/student/docker/student /var/www
+COPY /var/lib/jenkins/workspace/student /var/www
 
 RUN npm install
 
