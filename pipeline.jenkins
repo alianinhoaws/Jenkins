@@ -45,7 +45,7 @@ pipeline {
         
         stage ("deploy to prod") {
             steps {
-               echo = "ansible playbook start"
+               echo "ansible playbook start"
                     sh '''
                     ansible-playbook home/alianinho/ansible/playbooks/docker.yml
                     '''
