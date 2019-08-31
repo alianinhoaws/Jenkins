@@ -49,7 +49,6 @@ pipeline {
                     sh '''
                     ansible-playbook home/alianinho/ansible/playbooks/docker.yml
                     '''
-                )
             }
         }
     }
