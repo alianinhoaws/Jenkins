@@ -42,5 +42,14 @@ pipeline {
                 '''
             }
         }
+        
+        stage ("asisible") {
+            steps {
+                ansiblePlaybook(
+                    inventory: 'all',
+                    playbook: '/home/alianinho/ansible/playbooks',
+                )
+            }
+        }
     }
 }
