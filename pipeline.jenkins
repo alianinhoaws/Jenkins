@@ -43,11 +43,12 @@ pipeline {
             }
         }
         
-        stage ("ansible") {
+        stage ("deploy to prod") {
             steps {
-                ansiblePlaybook(
-                    inventory: 'all',
-                    playbook: '/home/alianinho/ansible/playbooks/docker.yml',
+               echo = "ansible playbook start"
+                    sh '''
+                    ansible-playbook: /home/alianinho/ansible/playbooks/docker.yml
+                    '''
                 )
             }
         }
