@@ -43,7 +43,7 @@ pipeline {
             }
         }
         
-        stage ("asisible") {
+        stage ("ansible") {
             steps {
                 ansiblePlaybook(
                     inventory: 'all',
