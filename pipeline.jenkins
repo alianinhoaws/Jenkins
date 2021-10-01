@@ -2,26 +2,32 @@
 properties([disableConcurrentBuilds()])
 
 pipeline {
-    agent { 
+    agent {
         label 'master'
-        }
+    }
     triggers { pollSCM('* * * * *') }
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
         timestamps()
     }
+    parameters {
+        choice(choices: "master\ndevelop", description: 'BRANCH', name: 'BRANCH')
+        string(defaultValue: "alianinho", description: 'Image name name', name: 'IMAGE')
+    }
+
     stages {
-       stage("Clone repo") { 
-              steps {
-              git branch: 'toolbox', changelog: false, poll: false, url: 'https://github.com/macnaer/Students-Book.git'  
-                   }
-       }
-       stage("docker login") {
+        stage("Clone repo") {
+            steps {
+                git credentialsId: '05e830ed-8f0b-4119-84ef-1667153f0bc5', url: 'https://github.com/alianinhoaws/Jenkins.git'
+                println "Pulling from branch ${params.BRANCH}"
+            }
+        }
+        stage("docker login") {
             steps {
                 echo " docker login "
-                withCredentials([usernamePassword(credentialsId: 'docker_cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh """
-                    docker login -u $USERNAME -p $PASSWORD
+                    echo "docker login"
                     """
                 }
             }
@@ -30,7 +36,7 @@ pipeline {
             steps {
                 echo "start building image"
                 dir ('.') {
-                	sh 'docker build -t alianinho/student:latest . '
+                    sh 'docker build -t ${IMAGE}/student:latest . '
                 }
             }
         }
@@ -38,17 +44,8 @@ pipeline {
             steps {
                 echo "pushing image"
                 sh '''
-                docker push alianinho/student:latest
+                docker push ${IMAGE}/student:latest
                 '''
-            }
-        }
-        
-        stage ("deploy to prod") {
-            steps {
-               echo "ansible playbook start"
-                    sh '''
-                    ansible-playbook /home/alianinho/ansible/playbooks/docker.yml
-                    '''
             }
         }
     }
