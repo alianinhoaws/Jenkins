@@ -36,7 +36,7 @@ pipeline {
             steps {
                 echo "start building image"
                 dir ('.') {
-                    sh 'docker build -t ${IMAGE}/student:latest . '
+                    sh 'docker build -t ${params.IMAGE}/student:latest . '
                 }
             }
         }
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 echo "pushing image"
                 sh '''
-                docker push ${IMAGE}/student:latest
+                docker push ${params.IMAGE}/student:latest
                 '''
             }
         }
