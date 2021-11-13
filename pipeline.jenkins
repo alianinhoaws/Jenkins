@@ -36,16 +36,18 @@ pipeline {
             steps {
                 echo "start building image"
                 dir ('.') {
-                    sh 'docker build -t ${params.IMAGE}/student:latest . '
+                    sh """
+                    docker build -t ${params.IMAGE}/student:latest .
+                    """
                 }
             }
         }
         stage("docker push") {
             steps {
                 echo "pushing image"
-                sh '''
+                sh """
                 docker push ${params.IMAGE}/student:latest
-                '''
+                """
             }
         }
     }
