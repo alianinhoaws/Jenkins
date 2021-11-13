@@ -47,7 +47,7 @@ pipeline {
             steps {
                 echo "pushing image"
                 sh """
-                docker push ${params.IMAGE}/student:latest'
+                docker push ${params.IMAGE}/student:latest
                 """
             }
         }
