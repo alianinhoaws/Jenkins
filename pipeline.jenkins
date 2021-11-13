@@ -35,7 +35,6 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo "start building image"
-                echo "IMAGE ${params.IMAGE}"
                 dir ('.') {
                     sh """
                     docker build -t ${params.IMAGE}/student:latest .
