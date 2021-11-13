@@ -43,9 +43,8 @@ pipeline {
         stage("docker push") {
             steps {
                 echo "pushing image"
-                sh '''
-                docker push ${params.IMAGE}/student:latest
-                '''
+                echo "IMAGE ${params.IMAGE}"
+                sh 'docker push ${params.IMAGE}/student:latest'
             }
         }
     }
