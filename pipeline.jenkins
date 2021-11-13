@@ -11,7 +11,7 @@ pipeline {
         timestamps()
     }
     parameters {
-        choice(string: "", description: 'BRANCH', name: 'BRANCH')
+        choice(choices: "master\ndevelop\nfeature", description: 'BRANCH', name: 'BRANCH')
         string(defaultValue: "alianinho", description: 'Image name name', name: 'IMAGE')
     }
 
