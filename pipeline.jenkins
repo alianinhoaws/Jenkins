@@ -16,12 +16,12 @@ pipeline {
     }
 
     stages {
-        stage("Clone repo") {
+//         stage("Clone repo") {
 //             steps {
 //                 git credentialsId: '05e830ed-8f0b-4119-84ef-1667153f0bc5', url: 'https://github.com/alianinhoaws/Jenkins.git'
 //                 println "Pulling from branch ${params.BRANCH}"
 //             }
-        }
+//         }
         stage("docker login") {
             steps {
                 echo " docker login "
