@@ -23,6 +23,8 @@ pipeline {
 //         }
         stage ("directory"){
                steps {
+                   sh "pwd"
+                   sh "-ls -la"
                    sh "cd ${env.BUILD_NUMBER}"
                    sh "pwd"
                }
@@ -74,7 +76,7 @@ post {
       cleanWs disableDeferredWipeout: true
       /* clean up our custom workspace */
       deleteDir()
-      dir("${workspace}@tmp") {
+      dir("${workspace}") {
         deleteDir()
       }
     }
