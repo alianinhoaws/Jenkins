@@ -21,6 +21,13 @@ pipeline {
 //                 println "Pulling from branch ${params.BRANCH}"
 //             }
 //         }
+        stage ("directory){
+               steps {
+                   sh "cd ${env.BUILD_NUMBER}"
+                   sh "pwd"
+               }
+               }
+               
         stage("docker login") {
             steps {
                 echo " docker login "
