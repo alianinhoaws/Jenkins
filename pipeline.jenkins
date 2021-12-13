@@ -6,7 +6,7 @@ pipeline {
     }
     triggers { pollSCM('* * * * *') }
     environment {
-        WORKSPACE="${WORKSPACE}/${env.BUILD_NUMBER}
+        WORKSPACE="${WORKSPACE}/${env.BUILD_NUMBER}"
     }
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
