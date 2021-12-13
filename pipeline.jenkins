@@ -4,10 +4,10 @@ pipeline {
     agent {
         label 'master'
     }
-    customWorkspace "/home/jenkins/workspace/${env.JOB_NAME}/${env.BUILD_NUMBER}"
     triggers { pollSCM('* * * * *') }
     environment {
         WORKSPACE="${WORKSPACE}/${env.BUILD_NUMBER}"
+        customWorkspace "/home/jenkins/workspace/${env.JOB_NAME}/${env.BUILD_NUMBER}"
     }
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
