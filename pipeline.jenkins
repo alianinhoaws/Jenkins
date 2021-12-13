@@ -53,15 +53,15 @@ pipeline {
 
 
 post {
-    aborted { }
-    failure { 
-      script {
-        currentBuild.setKeepLog(true)
-      }
-    }
-    success { }
+//     aborted {}
+//     failure { 
+//       script {
+//         currentBuild.setKeepLog(true)
+//       }
+//     }
+//     success { }
 
-    always {}
+//     always {}
 
     cleanup {
       cleanWs disableDeferredWipeout: true
