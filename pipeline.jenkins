@@ -21,7 +21,7 @@ pipeline {
 //                 println "Pulling from branch ${params.BRANCH}"
 //             }
 //         }
-        stage ("directory){
+        stage ("directory"){
                steps {
                    sh "cd ${env.BUILD_NUMBER}"
                    sh "pwd"
