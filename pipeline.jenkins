@@ -4,6 +4,7 @@ pipeline {
     agent {
         label 'master'
     }
+    customWorkspace "/home/jenkins/workspace/${env.JOB_NAME}/${env.BUILD_NUMBER}"
     triggers { pollSCM('* * * * *') }
     environment {
         WORKSPACE="${WORKSPACE}/${env.BUILD_NUMBER}"
