@@ -51,3 +51,25 @@ pipeline {
         }
     }
 }
+
+post {
+    aborted { }
+    failure { 
+      script {
+        currentBuild.setKeepLog(true)
+      }
+    }
+    success { }
+
+    always {}
+
+    cleanup {
+      cleanWs disableDeferredWipeout: true
+      /* clean up our custom workspace */
+      deleteDir()
+      dir("${workspace}@tmp") {
+        deleteDir()
+      }
+    }
+  }
+}
