@@ -31,6 +31,8 @@ pipeline {
                    sh "echo ${env.WORKSPACE_TMP}"
                    sh "ls -la"
                    sh "echo ${env.WORKSPACE}"
+                   sh "echo Jenkins home"
+                   sh "echo ${JENKINS_HOME}"
                    sh "pwd"
                }
                }
