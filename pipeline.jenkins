@@ -6,7 +6,8 @@ pipeline {
     }
     triggers { pollSCM('* * * * *') }
     environment {
-        customWorkspace="/home/jenkins/workspace/${env.JOB_NAME}/${env.BUILD_NUMBER}"
+        WORKSPACE="${WORKSPACE}/${env.BUILD_NUMBER}"
+   
     }
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
@@ -27,8 +28,9 @@ pipeline {
         stage ("directory"){
                steps {
                    sh "pwd"
+                   sh "echo ${env.WORKSPACE_TMP}"
                    sh "ls -la"
-                   sh "cd ${env.BUILD_NUMBER}"
+                   sh "echo ${env.WORKSPACE_TMP}"
                    sh "pwd"
                }
                }
