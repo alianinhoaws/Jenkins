@@ -6,7 +6,7 @@ pipeline {
     }
     triggers { pollSCM('* * * * *') }
     environment {
-        WORKSPACE="${WORKSPACE}/${env.BUILD_NUMBER}"
+        workspace="${WORKSPACE}/${env.BUILD_NUMBER}"
    
     }
     options {
@@ -27,6 +27,7 @@ pipeline {
 //         }
         stage ("directory"){
                steps {
+                   ws (workspace){
                    sh "pwd"
                    sh "echo ${env.WORKSPACE_TMP}"
                    sh "ls -la"
@@ -34,6 +35,7 @@ pipeline {
                    sh "echo Jenkins home"
                    sh "echo ${JENKINS_HOME}"
                    sh "pwd"
+                   }
                }
                }
                
