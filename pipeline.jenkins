@@ -82,7 +82,7 @@ post {
 //     always {}
 
     cleanup {
-      cleanWs disableDeferredWipeout: true
+      cleanWs()
       /* clean up our custom workspace */
       deleteDir()
       dir("${env.WORKSPACE}") {
