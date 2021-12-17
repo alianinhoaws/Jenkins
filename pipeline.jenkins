@@ -27,7 +27,7 @@ pipeline {
 //         }
         stage ("directory"){
                steps {
-                   ws (workspace){
+//                    ws (workspace){
                    sh "pwd"
                    sh "echo ${env.WORKSPACE_TMP}"
                    sh "ls -la"
@@ -35,7 +35,7 @@ pipeline {
                    sh "echo Jenkins home"
                    sh "echo ${JENKINS_HOME}"
                    sh "pwd"
-                   }
+//                    }
                }
                }
                
