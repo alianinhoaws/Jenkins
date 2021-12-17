@@ -79,12 +79,12 @@ post {
 //     }
 //     success { }
     always {
-      cleanWs disableDeferredWipeout: true, deleteDirs: true
-      /* clean up our custom workspace */
+//       cleanWs disableDeferredWipeout: true, deleteDirs: true
+//       /* clean up our custom workspace */
       deleteDir()
-      dir("${env.WORKSPACE}") {
-        deleteDir()
-      }
+//       dir("${env.WORKSPACE}") {
+//         deleteDir()
+//       }
     }
   }
 }
