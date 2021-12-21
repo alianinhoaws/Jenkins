@@ -70,22 +70,37 @@ pipeline {
     }
 
 
-post {
-//     aborted {}
-//     failure { 
-//       script {
-//         currentBuild.setKeepLog(true)
+// post {
+// //     aborted {}
+// //     failure { 
+// //       script {
+// //         currentBuild.setKeepLog(true)
+// //       }
+// //     }
+// //     success { }
+//     always {
+//       cleanWs disableDeferredWipeout: true, deleteDirs: true
+// //       /* clean up our custom workspace */
+//       deleteDir()
+//       dir("${env.WORKSPACE}") {
+//           sh "pwd"
+//           deleteDir()
 //       }
 //     }
-//     success { }
+//   }
+// }
+    post {
     always {
-      cleanWs disableDeferredWipeout: true, deleteDirs: true
-//       /* clean up our custom workspace */
-      deleteDir()
-      dir("${env.WORKSPACE}") {
-          sh "pwd"
         deleteDir()
-      }
+        dir("${env.WORKSPACE}@tmp") {
+            deleteDir()
+        }
+        dir("${env.WORKSPACE}@script") {
+            deleteDir()
+        }
+        dir("${env.WORKSPACE}@script@tmp") {
+            deleteDir()
+        }
     }
-  }
+    }
 }
