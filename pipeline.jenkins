@@ -98,7 +98,7 @@ pipeline {
         dir("${env.WORKSPACE}@script") {
             deleteDir()
         }
-        dir("${env.WORKSPACE}@script@tmp") {
+        dir("${env.WORKSPACE") {
             deleteDir()
         }
     }
