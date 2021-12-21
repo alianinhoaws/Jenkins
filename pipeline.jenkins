@@ -79,7 +79,7 @@ post {
 //     }
 //     success { }
     always {
-//       cleanWs disableDeferredWipeout: true, deleteDirs: true
+      cleanWs disableDeferredWipeout: true, deleteDirs: true
 //       /* clean up our custom workspace */
       deleteDir()
       dir("${env.WORKSPACE}") {
