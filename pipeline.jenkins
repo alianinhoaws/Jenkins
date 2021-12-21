@@ -83,6 +83,7 @@ post {
 //       /* clean up our custom workspace */
       deleteDir()
       dir("${env.WORKSPACE}") {
+          sh "pwd"
         deleteDir()
       }
     }
